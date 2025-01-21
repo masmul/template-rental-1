@@ -2,19 +2,23 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 
-
 export const Hero = () => {
   const [location, setLocation] = useState("");
   const [date, setDate] = useState("");
 
   const handleWhatsApp = () => {
-    const text = encodeURIComponent(`saya ingin memesan mobil pada tanggal ${date}. lokasi saya di ${location}. apakah tersedia ?`);
+    const text = encodeURIComponent(
+      `saya ingin memesan mobil pada tanggal ${date}. lokasi saya di ${location}. apakah tersedia ?`
+    );
     window.open(`https://wa.me/087738000123?text=${text}`, "_blank");
   };
 
   return (
     <div className="relative bg-primary py-24 sm:py-32">
-      <div className="absolute inset-0 bg-[url('/lovable-uploads/d21d31f8-298c-4164-b5fb-ca5da0bd29c8.png')] bg-cover bg-center opacity-20" />
+      <div
+        className="absolute inset-0 bg-cover bg-center opacity-60"
+        style={{ backgroundImage: "url('https://templatecreative.com/uploads/hero.jpg')" }}
+      />
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
           Rental Mobil Murah Hanya Disini
@@ -41,7 +45,10 @@ export const Hero = () => {
                 onChange={(e) => setDate(e.target.value)}
                 className="w-full"
               />
-              <Button className="w-full bg-primary text-white" onClick={handleWhatsApp}>
+              <Button
+                className="w-full bg-primary text-white"
+                onClick={handleWhatsApp}
+              >
                 Pesan
               </Button>
             </div>

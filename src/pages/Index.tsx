@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
     import { Services } from "@/components/Services";
     import { CarCard } from "@/components/CarCard";
     import { fetchSupabase } from "@/lib/supabase";
+    import Footer from "@/components/Footer";
+
 
     const Index = () => {
       const [featuredCars, setFeaturedCars] = useState([]);
@@ -32,6 +34,7 @@ import { useEffect, useState } from "react";
               </div>
             </div>
           </section>
+          <Footer />
         </div>
       );
     };
