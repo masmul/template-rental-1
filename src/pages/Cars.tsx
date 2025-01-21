@@ -1,4 +1,6 @@
+import { useEffect, useState } from "react";
 import { CarCard } from "@/components/CarCard";
+import { fetchSupabase } from "@/lib/supabase";
 
 const cars = [
   {
@@ -53,6 +55,18 @@ const cars = [
 ];
 
 const Cars = () => {
+
+    const [featuredCars, setFeaturedCars] = useState([]);
+  
+        useEffect(() => {
+          const fetchCars = async () => {
+            const data = await fetchSupabase("cars");
+            setFeaturedCars(data);
+          };
+  
+          fetchCars();
+        }, []);
+
   return (
     <div className="py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -60,9 +74,9 @@ const Cars = () => {
           Daftar Mobil Rental
         </h1>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {cars.map((car, index) => (
-            <CarCard key={index} {...car} />
-          ))}
+        {featuredCars.map((car, index) => (
+                  <CarCard key={index} {...car} />
+                ))}
         </div>
       </div>
     </div>
